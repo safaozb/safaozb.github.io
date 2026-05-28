@@ -820,6 +820,53 @@ section {
   vertical-align: -0.16em;
 }
 
+.flag-confetti {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.flag-confetti span {
+  position: absolute;
+  top: -24px;
+  left: var(--x);
+  width: 9px;
+  height: 15px;
+  border-radius: 2px;
+  background: hsl(var(--hue), 92%, 58%);
+  box-shadow: 0 0 16px hsl(var(--hue), 92%, 58%, 0.42);
+  animation: flag-confetti-fall var(--duration) cubic-bezier(0.22, 0.72, 0.2, 1) var(--delay) forwards;
+}
+
+.flag-confetti span:nth-child(3n) {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.flag-confetti span:nth-child(4n) {
+  width: 5px;
+  height: 18px;
+}
+
+@keyframes flag-confetti-fall {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(var(--drift), 108vh, 0) rotate(var(--spin));
+    opacity: 0;
+  }
+}
+
 .button {
   display: inline-flex;
   min-height: 48px;
